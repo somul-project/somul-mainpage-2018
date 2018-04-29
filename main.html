@@ -76,12 +76,12 @@
                     
                     <div style="display: table; height: 55px; overflow: hidden;">
                         <img style="width: 34px; height: 34px; margin: 10.5px 17px 10.5px 38px;" src="./public/resources/icon-pin.png">
-                        <div style="display: table-cell; vertical-align: middle;">
+                        <div class="vcenter">
                             <div style="float:left; width: 132px;">
                                 <h3 class="plane-text">물품 발송 주소</h3>
                             </div>
                         </div>
-                        <div style="display: table-cell; vertical-align: middle;">
+                        <div class="vcenter">
                             <div style="float:left">
                                 <p class="plane-text">서울 성북구 정릉로 77 국민대학교 7호관 615호<br>소프트웨어에 물들다 담당자(우편번호 02707)</p>
                             </div>
@@ -90,12 +90,12 @@
                     
                     <div style="display: table; height: 70px; overflow: hidden;">
                         <img style="width: 34px; height: 34px; margin: 17px 17px 17px 38px;" src="./public/resources/icon-email.png">
-                        <div style="display: table-cell; vertical-align: middle;">
+                        <div class="vcenter">
                             <div style="float:left; width: 132px;">
                                 <h3 class="plane-text">관게자 이메일</h3>
                             </div>
                         </div>
-                        <div style="display: table-cell; vertical-align: middle;">
+                        <div class="vcenter">
                             <div style="float:left">
                                 <p class="plane-text">somul.may@gmail.com</p>
                             </div>
@@ -104,12 +104,12 @@
                     
                     <div style="display: table; height: 70px; overflow: hidden;">
                         <img style="width: 34px; height: 34px; margin: 17px 17px 17px 38px;" src="./public/resources/icon-donate.png">
-                        <div style="display: table-cell; vertical-align: middle;">
+                        <div class="vcenter">
                             <div style="float:left; width: 132px;">
                                 <h3 class="plane-text">현금 후원 안내</h3>
                             </div>
                         </div>
-                        <div style="display: table-cell; vertical-align: middle;">
+                        <div class="vcenter">
                             <div style="float:left">
                                 <p class="plane-text">후원하신 현금은 강의 진행에 필요한 소모품, 장비 및 기타 경비,<br>우편료, 도메인 유지비, 행사 후 뒤풀이 비용 등으로 사용됩니다.</p>
                             </div>
@@ -118,12 +118,12 @@
                     
                     <div style="display: table; height: 96px; overflow: hidden;">
                         <img style="width: 34px; height: 34px; margin: 26.5px 17px 34.5px 38px;" src="./public/resources/icon-gift.png">
-                        <div style="display: table-cell; vertical-align: middle;">
+                        <div class="vcenter">
                             <div style="float:left; width: 132px;">
                                 <h3 class="plane-text">뒤풀이 행사의 경품</h3>
                             </div>
                         </div>
-                        <div style="display: table-cell; vertical-align: middle;">
+                        <div class="vcenter">
                             <div style="float:left">
                                 <p class="plane-text">역사 책, 공연 티켓, 상품권, 소소한 회사 기념품 등<br>(대부분 자원봉사자는 고등학생 이상임을 감안해 주세요)</p>
                             </div>
@@ -133,25 +133,71 @@
             </div>
         </div>
         
-        <div id="content-faq" class="content hide"
-        style="overflow:scroll; float: none;">
-        <div id="link-content"></div>
-        <div id="faq-content"></div>
-    </div>
-    
-    <div id="footer">
-        <div id="footer-content">
-            <img style="width: 68px; height: 26px; margin: 9px auto;" src="./public/resources/footer-prev.png">
-            <div id="footer-content-middle">
+        
+        <div id="content-faq" class="content hide" style="overflow:scroll; float: none;">
+            <div style="width: 100%; height: 169px;">
+                <img style="width: 816px; height: 125px; margin: 22px 141px 22px 141px;" src="./public/resources/faq-logo.png">
             </div>
-            <img style="width: 32px; height: 25px; margin: 14px auto;" src="./public/resources/footer-youtube.png">
-            <img style="width: 32px; height: 25px; margin: 14px auto;" src="./public/resources/footer-facebook.png">
+            <div id="faq-card-wrapper">
+                <div class="faq-card">
+                    <div class="faq-card-img">
+                        <img style="width: 69px; height: 120px; margin: 32px 103px 32px 103px;" src="./public/resources/faq-top-1.png">
+                    </div>
+                    
+                    <div class="faq-card-text">
+                        <div class="vcenter">
+                            <img style="height: 27px; margin: 0 68.78221px;" src="./public/resources/faq-top-t1.png">
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-card">
+                    <div class="faq-card-img">
+                        <img style="width: 69px; height: 120px; margin: 32px 103px 32px 103px;" src="./public/resources/faq-top-2.png">
+                    </div>
+                    <div class="faq-card-text">
+                        <div class="vcenter">
+                            <img style="height: 27px; margin: 0 45.5px;" src="./public/resources/faq-top-t2.png">
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-card">
+                    <div class="faq-card-img">
+                        <img style="width: 69px; height: 120px; margin: 32px 103px 32px 103px;" src="./public/resources/faq-top-3.png">
+                    </div>
+                    <div class="faq-card-text">
+                        <div class="vcenter">
+                            <img style="height: 27px; margin: 0 73.115px;" src="./public/resources/faq-top-t3.png">
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-card">
+                    <div class="faq-card-img">
+                        <img style="width: 69px; height: 120px; margin: 32px 103px 32px 103px;" src="./public/resources/faq-top-4.png">
+                    </div>
+                    <div class="faq-card-text">
+                        <div class="vcenter">
+                            <img style="height: 27px; margin: 0 73.115px;" src="./public/resources/faq-top-t4.png">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="width: 1102px; height: 46px;"></div>
+            <div id="link-content"></div>
+            <div id="faq-content"></div>
+            <div style="width: 1102px; height: 46px;"></div>
+        </div>
+        
+        <div id="footer">
+            <div id="footer-content">
+                <img style="width: 68px; height: 26px; margin: 9px auto;" src="./public/resources/footer-prev.png">
+                <div id="footer-content-middle">
+                </div>
+                <img style="width: 32px; height: 25px; margin: 14px auto;" src="./public/resources/footer-youtube.png">
+                <img style="width: 32px; height: 25px; margin: 14px auto;" src="./public/resources/footer-facebook.png">
+            </div>
         </div>
     </div>
     
-</div>
-
-
 </body>
 
 <script
