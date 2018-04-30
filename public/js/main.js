@@ -18,7 +18,9 @@ $( "#menu-4" ).click(function() {
     changeScreen(4);
 });
 
+var saveClicked;
 function changeScreen(newClicked) {
+    saveClicked = newClicked;
     if (isAnimated) return ;
     if (clicked === newClicked) {
         return ;
@@ -37,6 +39,7 @@ function changeScreen(newClicked) {
     setTimeout(function() {
         isAnimated = 0;
         clicked = newClicked;
+        if (clicked != saveClicked) changeScreen(saveClicked);
     }, 800);
     
 }
