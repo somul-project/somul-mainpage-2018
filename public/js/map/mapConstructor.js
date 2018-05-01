@@ -80,11 +80,8 @@ function setBoundsMap() {
     map.setZoomable(false);
 }
 
-function showMap() {
+$(window).on("load", function () {
+    getData();
     generateMap();
     setBoundsMap();
-}
-
-$(document).ready(function () {
-    getData();
 });
