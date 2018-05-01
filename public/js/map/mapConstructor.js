@@ -2,7 +2,7 @@ var libraryData = [];
 var map = null;
 
 function getData() { // 지도 정보 가져옴
-    var tmp = ["a", "b"];
+    var tmp = ["a", "b", "c"];
     var i, rndlat, rndlng;
     for (i = 0; i < 30; i++) {
 
@@ -57,8 +57,7 @@ function generateLibraryInfo(library) {
         '<input type="hidden" value="' + library.id + '">' +
         '</div>' +
         '</div>'
-    )
-    ;
+    );
 }
 
 function setBoundsMap() {
@@ -67,12 +66,17 @@ function setBoundsMap() {
     var library = null, marker = null;
     for (var i = 0; i < libraryData.length; i++) {
         library = libraryData[i];
-        marker = new daum.maps.Marker({position: library.position});
+        marker = (library.marker !== null)
+            ? library.marker
+            : (function () {
+                generateLibraryInfo(library);
+                return new daum.maps.Marker({position: library.position});
+            })();
         library.marker = marker;
+        marker.setImage(defaultMarkerImage);
         marker.setMap(map);
         // LatLngBounds 객체에 좌표를 추가합니다
         bounds.extend(library.position);
-        generateLibraryInfo(library);
     }
 
     map.setBounds(bounds); // 중심으로 이동

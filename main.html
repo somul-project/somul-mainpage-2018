@@ -48,7 +48,7 @@
     </div>
     <div id="header-blank" style="width: 100%;height: 105px;"></div>
 
-    <div id="content-main" class="content hide">
+    <div id="content-main" class="content show">
         <div class="content-half">
             <img style="width: 549px; height: 670px" src="./public/resources/content-poster.png">
         </div>
@@ -64,9 +64,12 @@
         </div>
     </div>
 
-    <div id="content-library" class="content show" style="width:100%">
+    <div id="content-library" class="content hide" style="width:100%">
         <div class="list-wrapper">
-            <div class="library-list-header">원하는 지역을 선택해주세요.</div>
+            <div class="library-list-header">
+                <img class="icon-back" src="./public/resources/icon/back.png" alt="뒤로가기" onclick="goBack()">
+                <p>원하는 지역을 선택해주세요.</p>
+            </div>
             <div class="library-list">
                 <div class="city a">
                     <div class="city-name">
@@ -77,6 +80,12 @@
                 <div class="city b">
                     <div class="city-name">
                         <p>서울특별시1</p>
+                    </div>
+                    <div class="libraries"></div>
+                </div>
+                <div class="city c">
+                    <div class="city-name">
+                        <p>서울특별시3</p>
                     </div>
                     <div class="libraries"></div>
                 </div>
@@ -229,7 +238,7 @@
         <div style="width: 1102px; height: 46px;"></div>
     </div>
 
-    <div id="footer" onclick="showMap()">
+    <div id="footer">
         <div id="footer-content">
             <img style="width: 68px; height: 26px; margin: 9px auto;" src="./public/resources/footer-prev.png">
             <div id="footer-content-middle">

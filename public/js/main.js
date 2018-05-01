@@ -35,13 +35,15 @@ function changeScreen(newClicked) {
     hideScreen(clicked);
     setTimeout(function () {
         showScreen(newClicked)
-    }, 400)
+    }, 400);
+
     setTimeout(function () {
         isAnimated = 0;
         clicked = newClicked;
-        if (clicked != saveClicked) changeScreen(saveClicked);
+        generateMap();
+        setBoundsMap();
+        if (clicked !== saveClicked) changeScreen(saveClicked);
     }, 800);
-
 }
 
 function showScreen(i) {
