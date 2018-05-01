@@ -22,3 +22,19 @@ var defaultMarkerImage = new daum.maps.MarkerImage(
     new daum.maps.Size(40, 42),
     {offset: new daum.maps.Point(13, 39)}
 );
+
+function changeListHeader(header) {
+    $(".library-list-header").text(header);
+}
+
+$(".city").click(function (event) {
+
+    $(".city-name").css("display", "none");
+    $(".libraries").css("display", "none");
+
+    var children = $(this).children("div");
+    $(children[1]).css("display", "block");
+    changeListHeader($(children[0]).children().first().text());
+    
+    var target = console.log($(this).attr('class').split(' ')[1]);
+});

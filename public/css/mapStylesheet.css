@@ -63,6 +63,10 @@
     cursor: pointer;
 }
 
+.libraries {
+    display: none;
+}
+
 .libraries > div {
     border: 1px solid #f5f5f5;
     border-top: 0;
@@ -84,7 +88,7 @@
 }
 
 .library-info {
-    /*display: none;*/
+    display: none;
 }
 
 .library-info p {

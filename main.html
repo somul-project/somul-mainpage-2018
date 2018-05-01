@@ -66,16 +66,16 @@
 
     <div id="content-library" class="content show" style="width:100%">
         <div class="list-wrapper">
-            <div class="library-list-header">서울특별시</div>
+            <div class="library-list-header">지역을 선택해주세요.</div>
             <div class="library-list">
                 <div class="city a">
-                    <div class="city-name" onclick="showlibrary(this)">
+                    <div class="city-name">
                         <p>서울특별시0</p>
                     </div>
                     <div class="libraries"></div>
                 </div>
                 <div class="city b">
-                    <div class="city-name" onclick="showlibrary(this)">
+                    <div class="city-name">
                         <p>서울특별시1</p>
                     </div>
                     <div class="libraries"></div>
@@ -229,7 +229,7 @@
         <div style="width: 1102px; height: 46px;"></div>
     </div>
 
-    <div id="footer">
+    <div id="footer" onclick="showMap()">
         <div id="footer-content">
             <img style="width: 68px; height: 26px; margin: 9px auto;" src="./public/resources/footer-prev.png">
             <div id="footer-content-middle">
@@ -248,7 +248,7 @@
 <script type="text/javascript" src="./public/js/main.js"></script>
 <script src="./public/js/faq.js"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=172283aea22a2859764d0f5c96a12445"></script>
-<script src="./public/js/map/maplibrary.js"></script>
-
+<script src="public/js/map/mapConstructor.js"></script>
+<script src="./public/js/map/mapControlList.js"></script>
 
 </html>
