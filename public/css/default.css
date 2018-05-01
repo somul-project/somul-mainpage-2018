@@ -230,10 +230,6 @@ p.content-right-text {
     -webkit-transition: max-height .4s;
 }
 
-#content-library {
-    background: blue;
-}
-
 .box-img_title_content {
     width: 100%;
     display: table;
