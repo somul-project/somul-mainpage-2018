@@ -16,11 +16,11 @@ function getData() { // 지도 정보 가져옴
             {
                 id: i,
                 city: tmp[Math.floor(Math.random() * tmp.length)],
-                name: "아무개" + i,
+                name: "아무개" + i + " 도서관",
                 position: new daum.maps.LatLng(37.6 + rndlat, 127 + rndlng),
                 detail: {
                     a: 1,
-                    address: "hello world" + i,
+                    address: "주소주소주소주소주소주소주소주소주소주소주소주소" + i,
                     tel: "01089759653" + i,
                     speaker: [
                         {name: "오은서1" + i, title: "소프트웨어란 무엇인가1" + i},
@@ -44,18 +44,21 @@ function generateMap() {
 }
 
 function generateLibraryInfo(library) {
-    document.getElementsByClassName(library.city)[0].children[1].innerHTML +=
+    $("." + library.city).first().children().eq(1).append(
         '<div class="library">' +
         '<p>' + library.name + '</p>' +
         '<div class="library-info">' +
         '<ul>' +
         '<li><p>' + library.detail.address + '</p></li>' +
         '<li><p>' + library.detail.tel + '</p></li>' +
-        '<li><p>' + library.detail.speaker[0].name + '<br>' + library.detail.speaker[0].title + '</p></li>' +
-        '<li><p>' + library.detail.speaker[1].name + '<br>' + library.detail.speaker[1].title + '</p></li>' +
+        '<li><p>2시 : ' + library.detail.speaker[0].name + '<br>주제 : ' + library.detail.speaker[0].title + '</p></li>' +
+        '<li><p>3시 : ' + library.detail.speaker[1].name + '<br>주제 : ' + library.detail.speaker[1].title + '</p></li>' +
         '</ul>' +
+        '<input type="hidden" value="' + library.id + '">' +
         '</div>' +
-        '</div>';
+        '</div>'
+    )
+    ;
 }
 
 function setBoundsMap() {
@@ -64,15 +67,12 @@ function setBoundsMap() {
     var library = null, marker = null;
     for (var i = 0; i < libraryData.length; i++) {
         library = libraryData[i];
-        generateLibraryInfo(library);
-
         marker = new daum.maps.Marker({position: library.position});
-
         library.marker = marker;
-
         marker.setMap(map);
         // LatLngBounds 객체에 좌표를 추가합니다
         bounds.extend(library.position);
+        generateLibraryInfo(library);
     }
 
     map.setBounds(bounds); // 중심으로 이동

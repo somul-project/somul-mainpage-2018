@@ -27,14 +27,55 @@ function changeListHeader(header) {
     $(".library-list-header").text(header);
 }
 
-$(".city").click(function (event) {
+$(window).on("load", function () {
+    $(".city-name").click(function (event) {
 
-    $(".city-name").css("display", "none");
-    $(".libraries").css("display", "none");
+        $(".city-name").css("display", "none");
+        $(".libraries").css("display", "none");
 
-    var children = $(this).children("div");
-    $(children[1]).css("display", "block");
-    changeListHeader($(children[0]).children().first().text());
-    
-    var target = console.log($(this).attr('class').split(' ')[1]);
+        var parent = $(this).parent().first();
+        var target = parent.attr('class').split(' ');
+
+        $(this).next().first().css("display", "block");
+
+        // var msg = parent.children(".city-name").first().children().first().text();
+        var msg = "원하는 도서관을 선택해주세요.";
+        changeListHeader(msg);
+
+        var bounds = new daum.maps.LatLngBounds(), library;
+
+        for (var i = 0; i < libraryData.length; i++) {
+            library = libraryData[i];
+            if (target[1] === library.city) {
+                library.marker.setImage(customMarkerImage);
+                bounds.extend(library.position);
+            } else {
+                library.marker.setImage(defaultMarkerImage);
+            }
+        }
+        map.setBounds(bounds);
+    });
+
+    $(".library").click(function (event) {
+        $(".library").css("display", "none");
+        $(".city-name").css("display", "none");
+
+        var msg = $(this).children("p").first().text();
+        changeListHeader(msg);
+
+        var hiddenValue = $(this).css("display", "block").children().last().css("display", "block").children().last();
+        var target = parseInt(hiddenValue.val());
+
+        var bounds = new daum.maps.LatLngBounds(), library;
+        for (var i = 0; i < libraryData.length; i++) {
+            library = libraryData[i];
+            if (target !== library.id) {
+                library.marker.setImage(defaultMarkerImage);
+            } else {
+                library.marker.setImage(customMarkerImage);
+                bounds.extend(library.position);
+            }
+        }
+        map.setBounds(bounds);
+    });
 });
