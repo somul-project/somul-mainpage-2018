@@ -2,7 +2,7 @@ var libraryData = [];
 var map = null;
 
 function getData() { // 지도 정보 가져옴
-    var tmp = ["a", "b", "c", "d"];
+    var tmp = ["a", "b"];
     var i, rndlat, rndlng;
     for (i = 0; i < 30; i++) {
 
@@ -23,8 +23,8 @@ function getData() { // 지도 정보 가져옴
                     address: "hello world" + i,
                     tel: "01089759653" + i,
                     speaker: [
-                        { name: "오은서1" + i, title: "소프트웨어란 무엇인가1" + i },
-                        { name: "오은서2" + i, title: "소프트웨어란 무엇인가2" + i }
+                        {name: "오은서1" + i, title: "소프트웨어란 무엇인가1" + i},
+                        {name: "오은서2" + i, title: "소프트웨어란 무엇인가2" + i}
                     ]
                 },
                 marker: null
@@ -43,20 +43,37 @@ function generateMap() {
     map = new daum.maps.Map(container, options); // 지도 호출
 }
 
+function generateLibraryInfo(library) {
+    document.getElementsByClassName(library.city)[0].children[1].innerHTML +=
+        '<div class="library">' +
+        '<p>' + library.name + '</p>' +
+        '<div class="library-info">' +
+        '<ul>' +
+        '<li><p>' + library.detail.address + '</p></li>' +
+        '<li><p>' + library.detail.tel + '</p></li>' +
+        '<li><p>' + library.detail.speaker[0].name + '<br>' + library.detail.speaker[0].title + '</p></li>' +
+        '<li><p>' + library.detail.speaker[1].name + '<br>' + library.detail.speaker[1].title + '</p></li>' +
+        '</ul>' +
+        '</div>' +
+        '</div>';
+}
+
 function setBoundsMap() {
     var bounds = new daum.maps.LatLngBounds();
 
-    var marker, library;
-    libraryData.forEach(library => {
-        // 배열의 좌표들이 잘 보이게 마커를 지도에 추가합니다
-        marker = new daum.maps.Marker({ position: library.position });
+    var library = null, marker = null;
+    for (var i = 0; i < libraryData.length; i++) {
+        library = libraryData[i];
+        generateLibraryInfo(library);
+
+        marker = new daum.maps.Marker({position: library.position});
 
         library.marker = marker;
 
         marker.setMap(map);
         // LatLngBounds 객체에 좌표를 추가합니다
         bounds.extend(library.position);
-    });
+    }
 
     map.setBounds(bounds); // 중심으로 이동
     map.setDraggable(false);
