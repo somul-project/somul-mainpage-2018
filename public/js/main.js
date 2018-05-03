@@ -17,6 +17,18 @@ $("#menu-4").click(function () {
     changeScreen(4);
 });
 
+$("#footer-btn-youtube").click(function () {
+    openInNewTab('http://bit.ly/somul-2-volunteers');
+});
+
+$("#footer-btn-facebook").click(function () {
+    openInNewTab('https://www.facebook.com/groups/may.somul/');
+});
+
+$("#header-btn-volunteer").click(function () {
+    openInNewTab('http://apply.somul.kr/volunteer/');
+});
+
 var saveClicked;
 
 function changeScreen(newClicked) {
@@ -86,4 +98,9 @@ function hideScreen(i) {
             $("#content-faq").addClass("hide");
             break;
     }
+}
+
+function openInNewTab(url) {
+    var win = window.open(url, '_blank');
+    win.focus();
 }
