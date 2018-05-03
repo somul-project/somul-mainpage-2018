@@ -60,3 +60,21 @@ hr {
     top: auto;
     padding: 0;
 }
+
+.qna {
+    color: #000000;
+    text-decoration: none;
+}
+
+.qna:hover {
+    color: #000000;
+    text-decoration: none;
+}
+
+.faqlink {
+    font-weight: 500;
+    margin: 0;
+    color: #ff7f00;
+    text-decoration: none;
+    padding-bottom: 10px;
+}
