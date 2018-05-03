@@ -7,16 +7,6 @@ var customMarkerImage = new daum.maps.MarkerImage(
     {offset: new daum.maps.Point(13, 39)}
 );
 
-var defaultMarkerImage = new daum.maps.MarkerImage(
-    'http://t1.daumcdn.net/localimg/localimages/07/mapjsapi/2x/default_marker.png',
-    new daum.maps.Size(40, 42),
-    {offset: new daum.maps.Point(13, 39)}
-);
-
-function changeListHeader(header) {
-    $(".library-list-header > p").text(header);
-}
-
 function goBack() {
     $(".city-name").css("display", "none");
     $(".library-info").css("display", "none");
@@ -49,7 +39,7 @@ function goBack() {
             library = libraryData[i];
             if (target === library.city) {
                 library.marker.setImage(customMarkerImage);
-                bounds.extend(library.position);
+                bounds.extend(library.coords);
             } else {
                 library.marker.setImage(defaultMarkerImage);
             }
@@ -62,7 +52,7 @@ function goBack() {
 }
 
 $(window).on("load", function () {
-    $(".city-name").click(function (event) {
+    $(document).on("click", ".city-name", function (event) {
         $(".city-name").css("display", "none");
         $(".libraries").css("display", "none");
         $(".library").css("display", "block");
@@ -84,7 +74,7 @@ $(window).on("load", function () {
             library = libraryData[i];
             if (target[1] === library.city) {
                 library.marker.setImage(customMarkerImage);
-                bounds.extend(library.position);
+                bounds.extend(library.coords);
             } else {
                 library.marker.setImage(defaultMarkerImage);
             }
@@ -94,7 +84,8 @@ $(window).on("load", function () {
         prevPage = 1;
     });
 
-    $(".library").click(function (event) {
+    $(document).on("click", ".library", function (event) {
+        console.log(1);
         $(".library").css("display", "none");
         $(".city-name").css("display", "none");
 
@@ -113,7 +104,7 @@ $(window).on("load", function () {
                 library.marker.setImage(defaultMarkerImage);
             } else {
                 library.marker.setImage(customMarkerImage);
-                bounds.extend(library.position);
+                bounds.extend(library.coords);
             }
         }
         map.setBounds(bounds);

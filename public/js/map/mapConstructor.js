@@ -1,36 +1,24 @@
 var libraryData = [];
 var map = null;
 
-function getData() { // 지도 정보 가져옴
-    var tmp = ["a", "b", "c"];
-    var i, rndlat, rndlng;
-    for (i = 0; i < 30; i++) {
+var defaultMarkerImage = new daum.maps.MarkerImage(
+    'http://t1.daumcdn.net/localimg/localimages/07/mapjsapi/2x/default_marker.png',
+    new daum.maps.Size(40, 42),
+    {offset: new daum.maps.Point(13, 39)}
+);
 
-        rndlat = Math.floor(Math.random() * 100) / 1000;
-        rndlat *= (rndlat % 2) ? 1 : -1;
+function changeListHeader(header) {
+    $(".library-list-header > p").text(header);
+}
 
-        rndlng = Math.floor(Math.random() * 100) / 1000;
-        rndlng *= (rndlng % 2) ? 1 : -1;
+function getPosition() {
+    var rndlat = Math.floor(Math.random() * 100) / 1000;
+    rndlat *= (rndlat % 2) ? 1 : -1;
 
-        libraryData.push(
-            {
-                id: i,
-                city: tmp[Math.floor(Math.random() * tmp.length)],
-                name: "아무개" + i + " 도서관",
-                position: new daum.maps.LatLng(37.6 + rndlat, 127 + rndlng),
-                detail: {
-                    a: 1,
-                    address: "주소주소주소주소주소주소주소주소주소주소주소주소" + i,
-                    tel: "01089759653" + i,
-                    speaker: [
-                        {name: "오은서1" + i, title: "소프트웨어란 무엇인가1" + i},
-                        {name: "오은서2" + i, title: "소프트웨어란 무엇인가2" + i}
-                    ]
-                },
-                marker: null
-            }
-        );
-    }
+    var rndlng = Math.floor(Math.random() * 100) / 1000;
+    rndlng *= (rndlng % 2) ? 1 : -1;
+
+    return new daum.maps.LatLng(37.6 + rndlat, 127 + rndlng);
 }
 
 function generateMap() {
@@ -43,16 +31,35 @@ function generateMap() {
     map = new daum.maps.Map(container, options); // 지도 호출
 }
 
+function checkNull(sentence) {
+    return (sentence === "") ? "발표 내용이 등록 안되었습니다." : sentence;
+}
+
 function generateLibraryInfo(library) {
+
+    if (!($(".library-list").children().hasClass(library.city))) {
+        $(".library-list").append(
+            '<div class="city ' + library.city + '">' +
+            '<div class="city-name">' +
+            '<p>' + library.city + '</p>' +
+            '</div>' +
+            '<div class="libraries"></div>' +
+            '</div>'
+        );
+    }
+
     $("." + library.city).first().children().eq(1).append(
         '<div class="library">' +
         '<p>' + library.name + '</p>' +
         '<div class="library-info">' +
         '<ul>' +
-        '<li><p>' + library.detail.address + '</p></li>' +
-        '<li><p>' + library.detail.tel + '</p></li>' +
-        '<li><p>2시 : ' + library.detail.speaker[0].name + '<br>주제 : ' + library.detail.speaker[0].title + '</p></li>' +
-        '<li><p>3시 : ' + library.detail.speaker[1].name + '<br>주제 : ' + library.detail.speaker[1].title + '</p></li>' +
+        '<li><p>' + library.location.detail + '<br>' + library.location.road + '</p></li>' +
+        ((library.speakers["14:00"].name !== undefined)
+            ? '<li><p>2시 : ' + checkNull(library.speakers["14:00"].name) + '<br>주제 : ' + checkNull(library.speakers["14:00"].description) + '</p></li>'
+            : "") +
+        ((library.speakers["15:00"].name !== undefined)
+            ? '<li><p>3시 : ' + checkNull(library.speakers["15:00"].name) + '<br>주제 : ' + checkNull(library.speakers["15:00"].description) + '</p></li>'
+            : "") +
         '</ul>' +
         '<input type="hidden" value="' + library.id + '">' +
         '</div>' +
@@ -63,20 +70,21 @@ function generateLibraryInfo(library) {
 function setBoundsMap() {
     var bounds = new daum.maps.LatLngBounds();
 
-    var library = null, marker = null;
+    var library = null;
     for (var i = 0; i < libraryData.length; i++) {
         library = libraryData[i];
-        marker = (library.marker !== null)
-            ? library.marker
-            : (function () {
-                generateLibraryInfo(library);
-                return new daum.maps.Marker({position: library.position});
-            })();
-        library.marker = marker;
-        marker.setImage(defaultMarkerImage);
-        marker.setMap(map);
+
+        if (library.marker === undefined) {
+            library.coords = getPosition();
+            library.city = "a";
+            generateLibraryInfo(library);
+            library.marker = new daum.maps.Marker({position: library.coords});
+        }
+
+        library.marker.setImage(defaultMarkerImage);
+        library.marker.setMap(map);
         // LatLngBounds 객체에 좌표를 추가합니다
-        bounds.extend(library.position);
+        bounds.extend(library.coords);
     }
 
     map.setBounds(bounds); // 중심으로 이동
@@ -85,7 +93,14 @@ function setBoundsMap() {
 }
 
 $(window).on("load", function () {
-    getData();
-    generateMap();
-    setBoundsMap();
+    $.ajax({
+        type: 'get',
+        url: "http://apply.somul.kr/api/v1/map",
+        success: function (response) {
+            libraryData = response;
+            generateMap();
+            setBoundsMap();
+        },
+        dataType: "json"
+    });
 });

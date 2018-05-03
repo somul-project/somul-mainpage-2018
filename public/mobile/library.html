@@ -68,26 +68,7 @@
                 <img class="icon-back" src="../resources/icon/back.png" alt="뒤로가기" onclick="goBack()">
                 <p>원하는 지역을 선택해주세요.</p>
             </div>
-            <div class="library-list">
-                <div class="city a">
-                    <div class="city-name">
-                        <p>서울특별시0</p>
-                    </div>
-                    <div class="libraries"></div>
-                </div>
-                <div class="city b">
-                    <div class="city-name">
-                        <p>서울특별시1</p>
-                    </div>
-                    <div class="libraries"></div>
-                </div>
-                <div class="city c">
-                    <div class="city-name">
-                        <p>서울특별시3</p>
-                    </div>
-                    <div class="libraries"></div>
-                </div>
-            </div>
+            <div class="library-list"></div>
         </div>
     </div>
 </section>
@@ -97,7 +78,9 @@
 <!-- 모든 컴파일된 플러그인을 포함합니다 (아래), 원하지 않는다면 필요한 각각의 파일을 포함하세요 -->
 <script src="js/bootstrap.min.js"></script>
 
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=172283aea22a2859764d0f5c96a12445"></script>
+<script type="text/javascript"
+        src="//dapi.kakao.com/v2/maps/sdk.js?appkey=172283aea22a2859764d0f5c96a12445&libraries=services"></script>
+
 <script src="../js/map/mapConstructor.js"></script>
 <script src="../js/map/mapControlList.js"></script>
 </body>
