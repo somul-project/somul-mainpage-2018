@@ -7,6 +7,10 @@ body {
     padding-top: 70px;
 }
 
-.navbar {
-    color : black;
+h4, b {
+    color: #cf453b;
+}
+
+.content-image {
+    max-width: 70%;
 }
