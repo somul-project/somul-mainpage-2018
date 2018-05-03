@@ -31,15 +31,23 @@ function generateMap() {
     map = new daum.maps.Map(container, options); // 지도 호출
 }
 
+function checkNull(sentence) {
+    return (sentence === "") ? "발표 내용이 등록 안되었습니다." : sentence;
+}
+
 function generateLibraryInfo(library) {
     $("." + library.city).first().children().eq(1).append(
         '<div class="library">' +
         '<p>' + library.name + '</p>' +
         '<div class="library-info">' +
         '<ul>' +
-        '<li><p>' + library.location.detail + '</p><p>' + library.location.road + '</p></li>' +
-        // '<li><p>2시 : ' + library.detail.speaker[0].name + '<br>주제 : ' + library.detail.speaker[0].title + '</p></li>' +
-        // '<li><p>3시 : ' + library.detail.speaker[1].name + '<br>주제 : ' + library.detail.speaker[1].title + '</p></li>' +
+        '<li><p>' + library.location.detail + '<br>' + library.location.road + '</p></li>' +
+        ((library.speakers["14:00"].name !== undefined)
+            ? '<li><p>2시 : ' + checkNull(library.speakers["14:00"].name) + '<br>주제 : ' + checkNull(library.speakers["14:00"].description) + '</p></li>'
+            : "") +
+        ((library.speakers["15:00"].name !== undefined)
+            ? '<li><p>3시 : ' + checkNull(library.speakers["15:00"].name) + '<br>주제 : ' + checkNull(library.speakers["15:00"].description) + '</p></li>'
+            : "") +
         '</ul>' +
         '<input type="hidden" value="' + library.id + '">' +
         '</div>' +
