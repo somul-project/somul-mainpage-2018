@@ -15,7 +15,7 @@
     overflow: hidden;
 }
 
-#content-library > ul, li {
+#content-library li {
     margin: 0;
     padding: 0;
 }
