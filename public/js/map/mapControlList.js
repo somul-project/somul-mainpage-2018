@@ -39,7 +39,7 @@ function goBack() {
             library = libraryData[i];
             if (target === library.city) {
                 library.marker.setImage(customMarkerImage);
-                bounds.extend(library.position);
+                bounds.extend(library.coords);
             } else {
                 library.marker.setImage(defaultMarkerImage);
             }
@@ -74,7 +74,7 @@ $(window).on("load", function () {
             library = libraryData[i];
             if (target[1] === library.city) {
                 library.marker.setImage(customMarkerImage);
-                bounds.extend(library.position);
+                bounds.extend(library.coords);
             } else {
                 library.marker.setImage(defaultMarkerImage);
             }
@@ -104,7 +104,7 @@ $(window).on("load", function () {
                 library.marker.setImage(defaultMarkerImage);
             } else {
                 library.marker.setImage(customMarkerImage);
-                bounds.extend(library.position);
+                bounds.extend(library.coords);
             }
         }
         map.setBounds(bounds);

@@ -36,6 +36,18 @@ function checkNull(sentence) {
 }
 
 function generateLibraryInfo(library) {
+
+    if (!($(".library-list").children().hasClass(library.city))) {
+        $(".library-list").append(
+            '<div class="city ' + library.city + '">' +
+            '<div class="city-name">' +
+            '<p>' + library.city + '</p>' +
+            '</div>' +
+            '<div class="libraries"></div>' +
+            '</div>'
+        );
+    }
+
     $("." + library.city).first().children().eq(1).append(
         '<div class="library">' +
         '<p>' + library.name + '</p>' +
@@ -63,16 +75,16 @@ function setBoundsMap() {
         library = libraryData[i];
 
         if (library.marker === undefined) {
-            library.position = getPosition();
+            library.coords = getPosition();
             library.city = "a";
             generateLibraryInfo(library);
-            library.marker = new daum.maps.Marker({position: library.position});
+            library.marker = new daum.maps.Marker({position: library.coords});
         }
 
         library.marker.setImage(defaultMarkerImage);
         library.marker.setMap(map);
         // LatLngBounds 객체에 좌표를 추가합니다
-        bounds.extend(library.position);
+        bounds.extend(library.coords);
     }
 
     map.setBounds(bounds); // 중심으로 이동
@@ -86,10 +98,8 @@ $(window).on("load", function () {
         url: "http://apply.somul.kr/api/v1/map",
         success: function (response) {
             libraryData = response;
-
             generateMap();
             setBoundsMap();
-
         },
         dataType: "json"
     });

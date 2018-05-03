@@ -80,26 +80,7 @@
                 <img class="icon-back" src="./public/resources/icon/back.png" alt="뒤로가기" onclick="goBack()">
                 <p>원하는 지역을 선택해주세요.</p>
             </div>
-            <div class="library-list">
-                <div class="city a">
-                    <div class="city-name">
-                        <p>서울특별시0</p>
-                    </div>
-                    <div class="libraries"></div>
-                </div>
-                <div class="city b">
-                    <div class="city-name">
-                        <p>서울특별시1</p>
-                    </div>
-                    <div class="libraries"></div>
-                </div>
-                <div class="city c">
-                    <div class="city-name">
-                        <p>서울특별시3</p>
-                    </div>
-                    <div class="libraries"></div>
-                </div>
-            </div>
+            <div class="library-list"></div>
         </div>
         <div id="mapview"></div>
     </div>
@@ -251,12 +232,15 @@
     <div id="footer">
         <div id="footer-content">
             <div id="footer-content-middle">
-                <img id="footer-btn-youtube" style="width: 32px; height: 25px; margin: 14px auto; cursor:pointer;" src="./public/resources/footer-youtube.png">
-                <img id="footer-btn-facebook" style="width: 32px; height: 25px; margin: 14px auto; cursor:pointer;" src="./public/resources/footer-facebook.png">
+                <img id="footer-btn-youtube" style="width: 32px; height: 25px; margin: 14px auto; cursor:pointer;"
+                     src="./public/resources/footer-youtube.png">
+                <img id="footer-btn-facebook" style="width: 32px; height: 25px; margin: 14px auto; cursor:pointer;"
+                     src="./public/resources/footer-facebook.png">
             </div>
             <div id="footer-content-prev" style="padding: 14px; float: right;">
                 <a style="color:black">지난 소물 보기 :&nbsp;</a>
-                <a href="http://somul.kr/previous/2016_oct/index.html">2016년 10월</a>&nbsp;&nbsp;/&nbsp;&nbsp;<a href="http://somul.kr/previous/2017_may/index.html">2017년 5월</a>
+                <a href="http://somul.kr/previous/2016_oct/index.html">2016년 10월</a>&nbsp;&nbsp;/&nbsp;&nbsp;<a
+                    href="http://somul.kr/previous/2017_may/index.html">2017년 5월</a>
             </div>
         </div>
     </div>
@@ -265,12 +249,12 @@
 
 </body>
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.js"
-        integrity="sha256-fNXJFIlca05BIO2Y5zh1xrShK3ME+/lYZ0j+ChxX2DA="
-        crossorigin="anonymous"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script type="text/javascript" src="./public/js/main.js"></script>
 <script src="./public/js/faq.js"></script>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=172283aea22a2859764d0f5c96a12445"></script>
+<script type="text/javascript"
+        src="//dapi.kakao.com/v2/maps/sdk.js?appkey=172283aea22a2859764d0f5c96a12445&libraries=services"></script>
 <script src="public/js/map/mapConstructor.js"></script>
 <script src="./public/js/map/mapControlList.js"></script>
 
