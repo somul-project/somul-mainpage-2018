@@ -1,14 +1,29 @@
 html, body {
     background: #fff8ca;
     letter-spacing: -0.06rem;
+    overflow: hidden;
 }
 
 body {
-    padding-top: 70px;
+    padding-top: 50px;
 }
 
 h4, b {
     color: #cf453b;
+}
+
+hr {
+    border-color: #000000;
+    margin: 0;
+}
+
+.footer {
+    bottom: 0;
+    width: 100%;
+}
+
+.footer > div > div {
+    padding: 20px 0 20px 0;
 }
 
 .content-image {
@@ -17,4 +32,28 @@ h4, b {
 
 .media-object {
     width: 32px;
+}
+
+#mapview {
+    position: absolute;
+    height: calc(65% - 50px);
+    width: 100%;
+    margin-left: 0 !important;
+    display: inline-block;
+}
+
+.list-wrapper {
+    bottom: 0;
+    height: 35%;
+    width: 100% !important;
+}
+
+.library-list-header, .city-name, .libraries > div {
+    padding: 3%;
+}
+
+.icon-back {
+    left: auto;
+    top: auto;
+    padding: 0;
 }
