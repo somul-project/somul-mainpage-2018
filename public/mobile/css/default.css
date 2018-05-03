@@ -1,7 +1,6 @@
 html, body {
     background: #fff8ca;
     letter-spacing: -0.06rem;
-    overflow: hidden;
 }
 
 body {
@@ -50,6 +49,10 @@ hr {
 
 .library-list-header, .city-name, .libraries > div {
     padding: 3%;
+}
+
+.library-info p {
+    padding: 0;
 }
 
 .icon-back {
