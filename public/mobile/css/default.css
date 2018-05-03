@@ -14,3 +14,7 @@ h4, b {
 .content-image {
     max-width: 70%;
 }
+
+.media-object {
+    width: 32px;
+}
